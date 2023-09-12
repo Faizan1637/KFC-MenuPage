@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import MenuPage from "./pages/MenuPage";
+import CartViewOffCanvas from "./component/CartViewOffCanvas";
+import { products } from "./data/product";
+import { category } from "./data/category";
+import Header from "./component/Header";
+import { addOns } from "./data/addOns";
 
 function App() {
+
+  let [cart, setCart] = useState([]);
+
+  const handleCart = (item) => {
+    let index = cart.findIndex((x) => x.id === item.id);
+      if (index>=0) {
+          let updateCart=[...cart]
+          updateCart[index].quantity = item.quantity + updateCart[index].quantity;
+          setCart(updateCart)
+      } else {
+          setCart([...cart, item]);
+      }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header length={cart.length} />
+
+      <CartViewOffCanvas cart={[...cart]} setCart={setCart} />
+
+      <MenuPage
+        products={products}
+        category={category}
+        addOns={addOns}
+        handleCart={handleCart}
+      />
+    </>
   );
 }
 
