@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 
 function CartViewOffCanvas({ cart, setCart }) {
 
-  let[qty,setQty]=useState([cart]);
+  // let[qty,setQty]=useState([cart]);
 
   const handleQtyDecrement=(item)=>{
     let index = cart.findIndex((x) => x.id === item.id);
@@ -21,8 +21,11 @@ function CartViewOffCanvas({ cart, setCart }) {
 
   const handleRemove = (item) => {
     setCart(cart.filter((p) => {
-      if (item.id !== p.id)
+      if (item.id !== p.id){
         return p;
+      }else{
+        return ""
+      }
     }))
   }
 
@@ -38,7 +41,7 @@ function CartViewOffCanvas({ cart, setCart }) {
             {cart.map((item) => (
               <div className='row .d-flex  align-items-center border' key={item.id}>
                 <div className='col-sm-3'>
-                  <img src={item.image} className='img-fluid' />
+                  <img src={item.image} className='img-fluid' alt="default image" />
                 </div>
                 <div className='col-sm-3'>{item.title}</div>
                 <h6 className='col-sm-3'>Rs:{item.price}</h6>

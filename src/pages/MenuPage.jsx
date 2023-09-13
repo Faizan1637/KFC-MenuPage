@@ -23,6 +23,9 @@ function MenuPage({products, category,addOns,handleCart}) {
       if(product.id >= lowerLimit && product.id <= upperLimit){
                return product;
       }
+      else{
+        return ""
+      }
     })
     )
   }

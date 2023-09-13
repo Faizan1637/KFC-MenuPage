@@ -3,9 +3,9 @@ import React from 'react'
 function KfcCards({product,handleClick,handleQuantity}) {
     let {title,id,image,descr,price}=product;
     return(
-        <div className="col-md-6 col-lg-4 col-sm-12 mt-2 col-xl-4 align-self-sm-center">
+    <div className="col-md-6 col-lg-4 col-sm-12 mt-2 col-xl-4 d-flex justify-content-center ">
     <div className="card " style={{width:"18rem"}}>
-    <img className="card-img-top" src={image} alt="Card image cap"/>        
+    <img className="card-img-top" src={image} alt={title} />        
     <div className="card-body">
     <h5 className="card-title">{title}</h5>
     <p className="card-text">{descr}</p>

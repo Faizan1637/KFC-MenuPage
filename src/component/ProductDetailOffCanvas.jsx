@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 
-const MySwal = withReactContent(Swal);
+
+
 
 const handleClick = () => {
   Swal.fire({
@@ -17,13 +17,7 @@ const handleClick = () => {
 function ProductDetailOffCanvas({ productDetail, addOns, handleCart,handleQuantity,quantity}) {
   const selectedProduct = productDetail.length ? productDetail[0] : 1;
   
-  let [
-    {
-      Mayo,
-      ChilliSource,
-      Drinks: { halfLiter, Liter },
-    },
-  ] = addOns;
+ 
 
   const getTotal = () => {
     return productDetail.length ? quantity * selectedProduct.price : 0;
@@ -57,7 +51,7 @@ function ProductDetailOffCanvas({ productDetail, addOns, handleCart,handleQuanti
                 <img
                   className="card-img-top"
                   src={selectedProduct.image}
-                  alt="Card image cap"
+                  alt={selectedProduct.title}
                 />
                 <div className="card-body">
                   <h5 className="card-title">{selectedProduct.title}</h5>

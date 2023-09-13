@@ -13,18 +13,27 @@ function Products({ products, addOns, handleCart, productItems}) {
     }
 
     const handleClick = ((id) => setProductDetail(products.filter((item)=>{
-        if(item.id=== id)
+        if(item.id=== id){
          return item
+        }else{
+          return ""
+        }
     }))
     )
 
   return (
     <>
       <ProductDetailOffCanvas productDetail={productDetail} addOns={addOns} handleCart={handleCart} handleQuantity={handleQuantity} quantity={quantity}/>
-      <div className='container bg-success'>
-        <div className='row  bg-danger align-items-sm-center justify-content-sm-center'>{productArray.map((product) => <KfcCards product={product} handleQuantity={handleQuantity} handleClick={handleClick} key={product.id} />)}</div>
-      </div>
-    </>
+      <div className='container'>
+        <div className='row bg-danger justify-content-center align-items-center'>
+
+          {productArray.map((product) => <KfcCards product={product} 
+          handleQuantity={handleQuantity} handleClick={handleClick} 
+          key={product.id} />)}
+          </div>
+          
+          
+      </div>    </>
   )
   
 }
