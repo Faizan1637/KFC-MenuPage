@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 
 function CartViewOffCanvas({ cart, setCart }) {
 
@@ -41,7 +41,7 @@ function CartViewOffCanvas({ cart, setCart }) {
             {cart.map((item) => (
               <div className='row .d-flex  align-items-center border' key={item.id}>
                 <div className='col-sm-3'>
-                  <img src={item.image} className='img-fluid' alt="default image" />
+                  <img src={item.image} className='img-fluid' alt={item.title} />
                 </div>
                 <div className='col-sm-3'>{item.title}</div>
                 <h6 className='col-sm-3'>Rs:{item.price}</h6>
